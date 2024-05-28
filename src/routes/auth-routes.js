@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const passport = require('passport');
 const axios = require('axios');
 const { generators } = require('openid-client');
 const qs = require('qs');

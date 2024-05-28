@@ -4,9 +4,7 @@ const { engine } = require("express-handlebars");
 const path = require("path");
 const axios = require("axios");
 const authRoutes = require("./routes/auth-routes");
-const passportSetup = require("./config/passport-setup");
 const session = require('express-session');
-const passport = require('passport');
 const qs = require('qs');
 const _ = require('lodash');
 const { access } = require("fs");
@@ -14,8 +12,6 @@ require('dotenv').config();
 
 const app = express();
 app.use(session({secret: 'secret_', resave: true, saveUninitialized: true}))
-app.use(passport.initialize())
-app.use(passport.session())
 
 app.use('/auth', authRoutes);
 // template engine
