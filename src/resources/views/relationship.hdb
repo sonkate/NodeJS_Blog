@@ -1,15 +1,8 @@
-<form method="POST" style="margin-top: 20px;">
+<form method="POST" action="/relationship" style="margin-top: 20px;">
   <div class="row">
-    <div class="col">
-      <input type="text" name="target_screen_name" class="form-control" placeholder="Target screen name">
-    </div>
-    <div class="row">
-      <div class="col" style="margin-top: 10px;">
-        <button class="btn btn-outline-primary" type="submit">Show relationship</button>
-      </div>
-      <div>
-        {{data}}
-      </div>
+    <div class="col" style="margin-top: 10px;">
+      <p class="text-danger" style="--bs-text-opacity: .8;">{{message}}</p>
+      <button class="btn btn-outline-primary" type="submit">Follow this user</button>
     </div>
   </div>
 </form>

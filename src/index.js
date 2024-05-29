@@ -73,17 +73,37 @@ app.get("/relationship", async (req, res) => {
     const response = await axios.request(options);
     listUserID = _.map(response.data.results, 'user_id');
     console.log(listUserID);
-    if (req.session.user.profile.id in listUserID) {
+    if (req.session.user && typeof req.session.user.profile!='undefined' && req.session.user.profile.id in listUserID) {
       res.send('User is following you');
     }
     else {
-      res.send('User is not following you');
+      res.render('relationship', {message:"User is not following you"});
     }
   } catch (error) {
     console.error(error);
   }
 });
+app.post("relationship", async (req, res) => {
+  const options = {
+    method: 'POST',
+    url: `https://api.twitter.com/2/users/${req.session.user.profile.id}/following`,
+    params: {
+      target_user_id: process.env.USER_ID
+    },
+    headers: {
+      'Authorization': `Bearer ${req.session.user.access_token}`
+    }
+  };
 
+  try {
+    const response = await axios.request(options);
+    console.log(response.data);
+    res.redirect('/relationship');
+  } catch (error) {
+    console.error(error);
+  }
+
+});
 
 
 
