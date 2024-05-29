@@ -7,7 +7,7 @@ const authRoutes = require("./routes/auth-routes");
 const session = require('express-session');
 const qs = require('qs');
 const _ = require('lodash');
-const { access } = require("fs");
+const requiresLogin = require('./helper').requiresLogin;
 require('dotenv').config();
 
 const app = express();
@@ -56,7 +56,7 @@ app.get("/search", (req, res) => {
 });
 
 // return list of followers
-app.get("/relationship", async (req, res) => {
+app.get("/relationship", requiresLogin, async (req, res) => {
   const options = {
     method: 'GET',
     url: 'https://twitter154.p.rapidapi.com/user/followers',
