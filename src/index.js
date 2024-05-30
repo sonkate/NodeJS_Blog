@@ -96,6 +96,9 @@ app.post("relationship", async (req, res) => {
   };
 
   try {
+    console.log('access_token', req.session.user.access_token)
+    console.log('id', req.session.user.profile.id)
+
     const response = await axios.request(options);
     console.log(response.data);
     res.redirect('/relationship');
