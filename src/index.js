@@ -87,7 +87,7 @@ app.post("/relationship", async (req, res) => {
   const options = {
     method: 'POST',
     url: `https://api.twitter.com/2/users/${req.session.user.profile.id}/following`,
-    params: {
+    data: {
       target_user_id: process.env.USER_ID
     },
     headers: {
