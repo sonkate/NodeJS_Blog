@@ -73,8 +73,9 @@ app.get("/relationship", requiresLogin, async (req, res) => {
     const response = await axios.request(options);
     listUserID = _.map(response.data.results, 'user_id');
     console.log(listUserID);
-    if (req.session.user && typeof req.session.user.profile!='undefined' && req.session.user.profile.id in listUserID) {
-      res.send('User is following you');
+    if (listUserID.includes(req.session.user.profile.id)) {
+      res.render('relationship', {message:"User is following you"});
+
     }
     else {
       res.render('relationship', {message:"User is not following you"});
