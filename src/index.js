@@ -83,7 +83,7 @@ app.get("/relationship", requiresLogin, async (req, res) => {
     console.error(error);
   }
 });
-app.post("relationship", async (req, res) => {
+app.post("/relationship", async (req, res) => {
   const options = {
     method: 'POST',
     url: `https://api.twitter.com/2/users/${req.session.user.profile.id}/following`,
