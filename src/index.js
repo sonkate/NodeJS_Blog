@@ -74,11 +74,11 @@ app.get("/relationship", requiresLogin, async (req, res) => {
     listUserID = _.map(response.data.results, 'user_id');
     console.log(listUserID);
     if (listUserID.includes(req.session.user.profile.id)) {
-      res.render('relationship', {message:"User is following you"});
+      res.render('relationship', {message:"User is following you", is_following: true});
 
     }
     else {
-      res.render('relationship', {message:"User is not following you"});
+      res.render('relationship', {message:"User is not following you", is_following: false});
     }
   } catch (error) {
     console.error(error);

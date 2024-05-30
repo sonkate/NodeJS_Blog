@@ -2,7 +2,9 @@
   <div class="row">
     <div class="col" style="margin-top: 10px;">
       <p class="text-danger" style="--bs-text-opacity: .8;">{{message}}</p>
+      {{#if is_following}}
       <button class="btn btn-outline-primary" type="submit">Follow this user</button>
+      {{/if}}
     </div>
   </div>
 </form>
