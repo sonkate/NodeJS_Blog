@@ -42,7 +42,7 @@ app.get("/", async(req, res) => {
           'Authorization': `Bearer ${accessToken}`
         }
       });
-      req.session.user.profile = response.data;
+      req.session.user.profile = response.data.data;
     } catch (error) {
       console.error(error);
       res.status(500).send('An error occurred while trying to fetch user data');
